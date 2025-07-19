@@ -1,7 +1,7 @@
 FROM debian:bullseye AS openssl
 
-ENV VERSION_OPENSSL=openssl-3.4.0 \
-    SHA256_OPENSSL=e15dda82fe2fe8139dc2ac21a36d4ca01d5313c75f99f46c4e8a27709b7294bf \
+ENV VERSION_OPENSSL=openssl-3.5.1 \
+    SHA256_OPENSSL=529043b15cffa5f36077a4d0af83f3de399807181d607441d734196d889b641f \
     SOURCE_OPENSSL=https://www.openssl.org/source/ \
     # OpenSSL OMC
     OPGP_OPENSSL_1=EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5 \
@@ -35,7 +35,6 @@ RUN set -e -x && \
     gpg --batch --verify openssl.tar.gz.asc openssl.tar.gz && \
     tar xzf openssl.tar.gz && \
     cd $VERSION_OPENSSL && \
-    ./Configure linux-x32 && \
     ./config \
       --prefix=/opt/openssl \
       --openssldir=/opt/openssl \
